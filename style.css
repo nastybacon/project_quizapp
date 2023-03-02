@@ -18,3 +18,7 @@ background-color: #007aff !important;
     align-items: center;
     padding-top: 12px;
 }
+.quiz-answer-card:hover {
+    cursor: pointer;
+    background-color: rgba(0,0,0,0.05);
+}
