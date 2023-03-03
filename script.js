@@ -63,12 +63,31 @@ function answer(selection) {
     let idOfRightAnswer = `answer_${question['right_answer']}`; /** ID der richtigen Antwort */
 
     if (selectedQuestionNumber == question['right_answer']) { /** wenn selected question = richtige Antwort, dann */
-        console.log('Richtige Antwort!'); /** richtige Antwort */
         document.getElementById(selection).parentNode.classList.add('bg-success'); /** .parentNode für "Überklasse" | Bootstrap Klasse für grüne Buttons hinzugefügt */
     } else { /** wenn nicht, dann */
         console.log('Falsche Antwort!!!'); /** falsche Antwort */
         document.getElementById(selection).parentNode.classList.add('bg-danger'); /** Bootstrap Klasse für rote Buttons hinzugefügt */
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success'); /** die richtige Antwort gleichzeitig anzeigen */
     }
-    document.getElementById('next-button').disabled = false;
+    document.getElementById('next-button').disabled = false; /** .disabled = false -> Button bei Eingabe "freischalten" */
+}
+
+function nextQuestion() { /** Funktion für den "Nächste Frage" Button */
+    currentQuestion++; /** wir erhöhen unsere Variable von 0 auf 1 */
+    document.getElementById('next-button').disabled = true; /** .disabled = true -> Button bei nächster Frage wieder deaktivieren */
+    resetAnswerButtons() /** Funktion zum resetten der Buttons aufrufen */
+    showQuestion(); /** die funktion für die nächste Variable anzeigen */
+}
+
+function resetAnswerButtons() {
+    document.getElementById('answer_1').parentNode.classList.remove('bg-danger'); /** die Klassen danger und success entfernen bei nächster Frage */
+    document.getElementById('answer_1').parentNode.classList.remove('bg-success'); /** 8 mal für 4 Anworten */
+    document.getElementById('answer_2').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_2').parentNode.classList.remove('bg-success');
+    document.getElementById('answer_3').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_3').parentNode.classList.remove('bg-success');
+    document.getElementById('answer_4').parentNode.classList.remove('bg-danger');
+    document.getElementById('answer_4').parentNode.classList.remove('bg-success');
+
+
 }
