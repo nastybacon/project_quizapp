@@ -63,7 +63,9 @@ function answer(selection) {
 
     if (selectedQuestionNumber == question['right_answer']) { /** wenn selected question = richtige Antwort, dann */
         console.log('Richtige Antwort!'); /** richtige Antwort */
+        document.getElementById(selection).parentNode.classList.add('bg-success'); /** .parentNode für "Überklasse" | Bootstrap Klasse für grüne Buttons hinzugefügt */
     } else { /** wenn nicht, dann */
         console.log('Falsche Antwort!!!'); /** falsche Antwort */
+        document.getElementById(selection).parentNode.classList.add('bg-danger'); /** Bootstrap Klasse für rote Buttons hinzugefügt */
     }
 }
