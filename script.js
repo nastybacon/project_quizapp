@@ -45,6 +45,7 @@ function init() {
 function showQuestion() {
     let question = questions[currentQuestion]; /** wir machen einen Container und holen das erste Element aus dem Array raus */
 
+    document.getElementById('question-number').innerHTML = currentQuestion + 1; /** die Nummer (0+1) der aktuellen Frage anzeigen  */
     document.getElementById('questiontext').innerHTML = question['question'];
     document.getElementById('answer_1').innerHTML = question['answer_1'];
     document.getElementById('answer_2').innerHTML = question['answer_2'];
