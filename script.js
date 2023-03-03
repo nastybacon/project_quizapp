@@ -60,6 +60,8 @@ function answer(selection) {
     console.log('SelectedQuestionNumber is', selectedQuestionNumber);
     console.log('Current question is ', question['right_answer']); /** Current question is 3 */
 
+    let idOfRightAnswer = `answer_${question['right_answer']}`;
+    /** ID der richtigen Antwort */
 
     if (selectedQuestionNumber == question['right_answer']) { /** wenn selected question = richtige Antwort, dann */
         console.log('Richtige Antwort!'); /** richtige Antwort */
@@ -67,5 +69,6 @@ function answer(selection) {
     } else { /** wenn nicht, dann */
         console.log('Falsche Antwort!!!'); /** falsche Antwort */
         document.getElementById(selection).parentNode.classList.add('bg-danger'); /** Bootstrap Klasse für rote Buttons hinzugefügt */
+        document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success'); /** die richtige Antwort gleichzeitig anzeigen */
     }
 }
