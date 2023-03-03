@@ -33,6 +33,8 @@ let questions = [
     }
 ];
 
+let rightQuestions = 0;
+
 let currentQuestion = 0;
 
 function init() {
@@ -48,6 +50,8 @@ function showQuestion() {
         // TODO: Show End Screen
         document.getElementById('endScreen').style = ''; // sichtbar machen
         document.getElementById('questionBody').style = 'display: none'; // ausblenden
+        document.getElementById('amount-of-guestions').innerHTML = questions.length; // gesamte Menge der Fragen
+        document.getElementById('amount-of-right-questions').innerHTML = rightQuestions; // gesamte Menge der richtigen Antworten
     } else { // wenn nicht, dann Frage anzeigen
 
         let question = questions[currentQuestion]; /** wir machen einen Container und holen das erste Element aus dem Array raus */
@@ -72,6 +76,7 @@ function answer(selection) {
 
     if (selectedQuestionNumber == question['right_answer']) { /** wenn selected question = richtige Antwort, dann */
         document.getElementById(selection).parentNode.classList.add('bg-success'); /** .parentNode für "Überklasse" | Bootstrap Klasse für grüne Buttons hinzugefügt */
+        rightQuestions++; // bei richtiger Antwort 0+1 | bei -- wird es um 1 verringert
     } else { /** wenn nicht, dann */
         console.log('Falsche Antwort!!!'); /** falsche Antwort */
         document.getElementById(selection).parentNode.classList.add('bg-danger'); /** Bootstrap Klasse für rote Buttons hinzugefügt */
