@@ -100,3 +100,13 @@ function resetAnswerButtons() {
     document.getElementById('answer_4').parentNode.classList.remove('bg-danger');
     document.getElementById('answer_4').parentNode.classList.remove('bg-success');
 }
+
+function restartGame(){ // Funktion für den "Neustart" Button
+    document.getElementById('header-image').src = 'img/school.jpg'; // das esrte Bild wieder aufrufen
+    document.getElementById('questionBody').style = '';  // questionBody wieder anzeigen
+    document.getElementById('endScreen').style = 'display: none'; // Endscreen ausblenden
+    rightQuestions = 0; // die richtigen Antworten auf 0 setzen
+    currentQuestion = 0; // die aktuelle Frage auf 0 setzen
+    init(); // die komplette Funktion wieder aufrufen
+    
+}
