@@ -52,6 +52,7 @@ function showQuestion() {
         document.getElementById('questionBody').style = 'display: none'; // ausblenden
         document.getElementById('amount-of-guestions').innerHTML = questions.length; // gesamte Menge der Fragen
         document.getElementById('amount-of-right-questions').innerHTML = rightQuestions; // gesamte Menge der richtigen Antworten
+        document.getElementById('header-image').src = 'img/cup.jpg'; // Bild beim Ergebnis ersetzten
     } else { // wenn nicht, dann Frage anzeigen
 
         let question = questions[currentQuestion]; /** wir machen einen Container und holen das erste Element aus dem Array raus */

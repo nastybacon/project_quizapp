@@ -26,13 +26,12 @@
 
     <div class="container">
         <div class="card quiz-card">
-            <img src="img/school.jpg" class="card-img-top">
+            <img src="img/school.jpg" id="header-image" class="card-img-top">
+            <!-- ID einführen, um mit JS das Bild am Ende zu ersetzten-->
 
             <div class="card-body" id="endScreen" style="display: none;"> <!-- wird beim Beenden vom Quiz gezeigt-->
-                <div class="text-center">Quiz beendet!</div>  <!-- style="display: none; wird zum ausblenden verwendet -->
-                <div>
-                    <img class="width-100" src="img/cup.jpg">
-                </div>
+                <div class="text-center final-headline">Quiz beendet!</div>  <!-- style="display: none; wird zum ausblenden verwendet -->
+                
 
                 <div class="text-center">
                     Du hast <b id="amount-of-right-questions">XXX</b> Fragen von <b id="amount-of-guestions">XXX</b> richtig beantwortet!

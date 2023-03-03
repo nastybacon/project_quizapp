@@ -34,3 +34,8 @@ background-color: #007aff !important;
 .text-center {
     text-align: center;
 }
+
+.final-headline {
+    font-size: 38px;
+    margin-bottom: 32px;
+}
