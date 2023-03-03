@@ -27,8 +27,16 @@
     <div class="container">
         <div class="card quiz-card">
             <img src="img/school.jpg" class="card-img-top">
-            <div class="card-body">
+
+            <div class="card-body" id="endScreen" style="display: none;"> <!-- wird beim Beenden vom Quiz gezeigt-->
+                Quiz beendet!  <!-- style="display: none; wird zum ausblenden verwendet -->
+            </div>
+            
+
+            <div class="card-body" id="questionBody"> 
                 <h5 class="card-title" id="questiontext">Frage</h5>
+
+
                 <div class="card quiz-answer-card mb-2" onclick="answer('answer_1')">
                     <div class="card-body" id="answer_1">
                         Antwort

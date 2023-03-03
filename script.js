@@ -43,15 +43,22 @@ function init() {
 };
 
 function showQuestion() {
-    let question = questions[currentQuestion]; /** wir machen einen Container und holen das erste Element aus dem Array raus */
 
-    document.getElementById('question-number').innerHTML = currentQuestion + 1; /** die Nummer (0+1) der aktuellen Frage anzeigen  */
-    document.getElementById('questiontext').innerHTML = question['question'];
-    document.getElementById('answer_1').innerHTML = question['answer_1'];
-    document.getElementById('answer_2').innerHTML = question['answer_2'];
-    document.getElementById('answer_3').innerHTML = question['answer_3'];
-    document.getElementById('answer_4').innerHTML = question['answer_4'];
+    if (currentQuestion >= questions.length) { /** wenn der Wert der aktuellen Frage größer als die Menge der Fragen ist, dann */
+        // TODO: Show End Screen
+        document.getElementById('endScreen').style = ''; // sichtbar machen
+        document.getElementById('questionBody').style = 'display: none'; // ausblenden
+    } else { // wenn nicht, dann Frage anzeigen
 
+        let question = questions[currentQuestion]; /** wir machen einen Container und holen das erste Element aus dem Array raus */
+
+        document.getElementById('question-number').innerHTML = currentQuestion + 1; /** die Nummer (0+1) der aktuellen Frage anzeigen  */
+        document.getElementById('questiontext').innerHTML = question['question'];
+        document.getElementById('answer_1').innerHTML = question['answer_1'];
+        document.getElementById('answer_2').innerHTML = question['answer_2'];
+        document.getElementById('answer_3').innerHTML = question['answer_3'];
+        document.getElementById('answer_4').innerHTML = question['answer_4'];
+    }
 }
 
 function answer(selection) {
