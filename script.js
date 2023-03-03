@@ -36,14 +36,14 @@ let questions = [
 let currentQuestion = 0;
 
 function init() {
-    document.getElementById('all-questions').innerHTML = questions.length;
+    document.getElementById('all-questions').innerHTML = questions.length; /** "Länge" der Fragen */
 
     showQuestion();
 
 };
 
 function showQuestion() {
-    let question = questions[currentQuestion];
+    let question = questions[currentQuestion]; /** wir machen einen Container und holen das erste Element aus dem Array raus */
 
     document.getElementById('questiontext').innerHTML = question['question'];
     document.getElementById('answer_1').innerHTML = question['answer_1'];
@@ -55,14 +55,15 @@ function showQuestion() {
 
 function answer(selection) {
     let question = questions[currentQuestion];
-    console.log('Selected answer is ', selection);
-    let selectedQuestionNumber = selection.slice(-1);
+    console.log('Selected answer is ', selection); /** Selected answer is answer_2 */
+    let selectedQuestionNumber = selection.slice(-1); /** .slice(-1) ist der letzte Buchstabe von selection (=answer_3) */
     console.log('SelectedQuestionNumber is', selectedQuestionNumber);
-    console.log('Current question is ', question['right_answer']);
+    console.log('Current question is ', question['right_answer']); /** Current question is 3 */
 
-    if (selectedQuestionNumber == question['right_answer']) {
-        console.log('Richtige Antwort!');
-    } else {
-        console.log('Falsche Antwort!!!');
+
+    if (selectedQuestionNumber == question['right_answer']) { /** wenn selected question = richtige Antwort, dann */
+        console.log('Richtige Antwort!'); /** richtige Antwort */
+    } else { /** wenn nicht, dann */
+        console.log('Falsche Antwort!!!'); /** falsche Antwort */
     }
 }
