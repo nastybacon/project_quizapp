@@ -34,6 +34,9 @@ let questions = [
 ];
 let rightQuestions = 0;
 let currentQuestion = 0;
+let AUDIO_SUCCESS = new Audio('audio/success.mp3'); // Variable für "grünen" Ton
+let AUDIO_FAIL = new Audio('audio/fail.mp3'); // Variable für "roten" Ton
+
 function init() {
     document.getElementById('all-questions').innerHTML = questions.length; /** "Länge" der Fragen */
     showQuestion();
@@ -74,13 +77,18 @@ function answer(selection) {
     console.log('SelectedQuestionNumber is', selectedQuestionNumber);
     console.log('Current question is ', question['right_answer']); /** Current question is 3 */
     let idOfRightAnswer = `answer_${question['right_answer']}`; /** ID der richtigen Antwort */
+    
     if (selectedQuestionNumber == question['right_answer']) { /** wenn selected question = richtige Antwort, dann */
         document.getElementById(selection).parentNode.classList.add('bg-success'); /** .parentNode für "Überklasse" | Bootstrap Klasse für grüne Buttons hinzugefügt */
+        AUDIO_SUCCESS.play(); // abspielen des Souns bei RICHTIG
         rightQuestions++; // bei richtiger Antwort 0+1 | bei -- wird es um 1 verringert
+   
     } else { /** wenn nicht, dann */
+
         console.log('Falsche Antwort!!!'); /** falsche Antwort */
         document.getElementById(selection).parentNode.classList.add('bg-danger'); /** Bootstrap Klasse für rote Buttons hinzugefügt */
         document.getElementById(idOfRightAnswer).parentNode.classList.add('bg-success'); /** die richtige Antwort gleichzeitig anzeigen */
+        AUDIO_FAIL.play(); // abspielen des Sounds bei Falsch
     }
     document.getElementById('next-button').disabled = false; /** .disabled = false -> Button bei Eingabe "freischalten" */
 }
