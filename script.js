@@ -42,33 +42,16 @@ function init() {
     showQuestion();
 };
 function showQuestion() {
-    if (currentQuestion >= questions.length) { /** wenn der Wert der aktuellen Frage größer als die Menge der Fragen ist, dann */
-        // Show End Screen
-        document.getElementById('endScreen').style = ''; // sichtbar machen
-        document.getElementById('questionBody').style = 'display: none'; // ausblenden
-
-        document.getElementById('amount-of-guestions').innerHTML = questions.length; // gesamte Menge der Fragen
-        document.getElementById('amount-of-right-questions').innerHTML = rightQuestions; // gesamte Menge der richtigen Antworten
-        document.getElementById('header-image').src = 'img/cup.jpg'; // Bild beim Ergebnis ersetzten
+    if (gameIsOver()) { // Clean Coding
+        showEndScreen(); // Clean Coding
     } else { // wenn nicht, dann Frage anzeigen
-
-        let percent = (currentQuestion + 1) / questions.length; // ausrechnen wie viel Prozent eine Frage aktuell hat + (0+1) für die erste Frage
-        percent = Math.round(percent * 100); // % anzeigen + runden (nicht 0.25, sondern 25)
-
-        document.getElementById('progress-bar').innerHTML = `${percent}%`; // % mit Zahl*100 als Variable anzeigen 
-        document.getElementById('progress-bar').style = `width: ${percent}%`; // die Prozentzahl auch für den blauen Balken verändern        
-        
-        console.log('Fortschritt', percent);
-
-        let question = questions[currentQuestion]; /** wir machen einen Container und holen das erste Element aus dem Array raus */
-       
-        document.getElementById('question-number').innerHTML = currentQuestion + 1; /** die Nummer (0+1) der aktuellen Frage anzeigen  */
-        document.getElementById('questiontext').innerHTML = question['question'];
-        document.getElementById('answer_1').innerHTML = question['answer_1'];
-        document.getElementById('answer_2').innerHTML = question['answer_2'];
-        document.getElementById('answer_3').innerHTML = question['answer_3'];
-        document.getElementById('answer_4').innerHTML = question['answer_4'];
+        updateProgressBar(); // Clean Coding
+        updateToNextQuestion(); // Clean Coding
     }
+}
+
+function gameIsOver(){ // gibt immer TRUE oder FALSE aus
+    return currentQuestion >= questions.length; /** wenn der Wert der aktuellen Frage größer als die Menge der Fragen ist, dann */
 }
 function answer(selection) {
     let question = questions[currentQuestion];
@@ -107,6 +90,36 @@ function resetAnswerButtons() {
     document.getElementById('answer_3').parentNode.classList.remove('bg-success');
     document.getElementById('answer_4').parentNode.classList.remove('bg-danger');
     document.getElementById('answer_4').parentNode.classList.remove('bg-success');
+}
+
+function showEndScreen(){ // Clean Coding Korrektur
+            // Show End Screen
+            document.getElementById('endScreen').style = ''; // sichtbar machen
+            document.getElementById('questionBody').style = 'display: none'; // ausblenden
+            document.getElementById('amount-of-guestions').innerHTML = questions.length; // gesamte Menge der Fragen
+            document.getElementById('amount-of-right-questions').innerHTML = rightQuestions; // gesamte Menge der richtigen Antworten
+            document.getElementById('header-image').src = 'img/cup.jpg'; // Bild beim Ergebnis ersetzten
+}
+
+function updateProgressBar() {
+    let percent = (currentQuestion + 1) / questions.length; // ausrechnen wie viel Prozent eine Frage aktuell hat + (0+1) für die erste Frage
+    percent = Math.round(percent * 100); // % anzeigen + runden (nicht 0.25, sondern 25)
+
+    document.getElementById('progress-bar').innerHTML = `${percent}%`; // % mit Zahl*100 als Variable anzeigen 
+    document.getElementById('progress-bar').style = `width: ${percent}%`; // die Prozentzahl auch für den blauen Balken verändern        
+    
+}
+function updateToNextQuestion(){ // Clean Coding Korrektur
+    
+
+    let question = questions[currentQuestion]; /** wir machen einen Container und holen das erste Element aus dem Array raus */  
+    
+    document.getElementById('question-number').innerHTML = currentQuestion + 1; /** die Nummer (0+1) der aktuellen Frage anzeigen  */
+    document.getElementById('questiontext').innerHTML = question['question'];
+    document.getElementById('answer_1').innerHTML = question['answer_1'];
+    document.getElementById('answer_2').innerHTML = question['answer_2'];
+    document.getElementById('answer_3').innerHTML = question['answer_3'];
+    document.getElementById('answer_4').innerHTML = question['answer_4'];
 }
 
 function restartGame(){ // Funktion für den "Neustart" Button
